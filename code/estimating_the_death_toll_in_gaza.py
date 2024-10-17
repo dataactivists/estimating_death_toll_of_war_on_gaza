@@ -17,9 +17,8 @@
 # # Estimating the death toll in Gaza
 
 # %%
-import pandas as pd
 import altair as alt
-import json
+import pandas as pd
 
 # %% [markdown]
 # ## Official counts
@@ -50,7 +49,7 @@ df_official.info()
 
 # %%
 # from data.techforpalestine.org
-feb_6_official = 27958 
+feb_6_official = 27958
 
 # from https://aoav.org.uk/wp-content/uploads/2024/02/gaza_projections_report.pdf
 aoav_base_projection = 58260
@@ -120,7 +119,7 @@ df_estimates_weighted = df_estimates.merge(
     ].rename(
         columns={'report_date': 'date', 'killed_cum': 'estimate'}
     ),
-    how='outer'
+    how='outer',
 )
 
 df_estimates_weighted
@@ -202,27 +201,23 @@ chart_combined
 
 # %%
 # make legend chart
-chart_legend = alt.Chart({
-    'values': [
-        {'category': 'Official', 'color': 'black'},
-        {'category': 'Estimate', 'color': 'red'}
-    ]
-}).mark_point(
-    filled=True,
-    size=100
-).encode(
-    y=alt.Y('category:N', axis=alt.Axis(orient='right')).title(None).sort(None),
-    color=alt.Color('color:N', scale=None)
+chart_legend = (
+    alt.Chart({
+        'values': [
+            {'category': 'Official', 'color': 'black'},
+            {'category': 'Estimate', 'color': 'red'}
+        ]
+    })
+    .mark_point(filled=True, size=100)
+    .encode(
+        alt.Y('category:N').axis(orient='right').title(None).sort(None),
+        alt.Color('color:N', scale=None)
+    )
 )
 
 # combine the main chart with the legend
-chart = (
-    alt.hconcat(chart_combined, chart_legend)
-    .resolve_scale(color='independent')
-)
+chart = alt.hconcat(chart_combined, chart_legend).resolve_scale(color='independent')
 
 chart.save('../charts/official_vs_estimates.png')
 
 chart
-
-# %%
