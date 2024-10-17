@@ -1,3 +1,5 @@
+https://truthout.org/articles/israel-has-created-extermination-zone-in-north-gaza-advocates-warn/
+
 # Israel Has Created “Extermination Zone” in North Gaza, Advocates Warn
 
 Israel is effectively trapping hundreds of thousands in north Gaza and is systematically killing them all.

@@ -1,3 +1,5 @@
+https://www.dropsitenews.com/p/how-gaza-health-ministry-counts-dead
+
 # How the Health Ministry in Gaza Counts the Dead
 
 ### "Each of these individuals is more than just a number; each one carries a unique story, a profound tragedy, a home filled with memories, a family left grieving—don’t they deserve to be remembered?"

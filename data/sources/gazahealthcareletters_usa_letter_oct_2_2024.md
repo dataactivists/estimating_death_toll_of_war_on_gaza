@@ -1,3 +1,5 @@
+https://www.gazahealthcareletters.org/usa-letter-oct-2-2024
+
 # Letter to **President Biden **and** Vice President Harris**
 
 OPEN LETTER FROM AMERICAN MEDICAL PROFESSIONALS WHO SERVED IN GAZA

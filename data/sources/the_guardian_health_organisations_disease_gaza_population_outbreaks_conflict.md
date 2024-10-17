@@ -1,3 +1,5 @@
+https://www.theguardian.com/commentisfree/2023/dec/29/health-organisations-disease-gaza-population-outbreaks-conflict
+
 # It’s not just bullets and bombs. I have never seen health organisations as worried as they are about disease in Gaza
 
 A quarter of its population could die within a year due to outbreaks of disease caused by this unprecedented conflict

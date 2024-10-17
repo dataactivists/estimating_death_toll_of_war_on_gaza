@@ -1,3 +1,5 @@
+https://www.motherjones.com/politics/2024/07/palestine-gaza-israel-death-toll-gaza-health-ministry/
+
 # In the US, counting the dead in Gaza has become a gruesome political game
 
 On July 5,** ** the [ Lancet](https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(24)01169-3/fulltext), one of the most famous medical journals in the world, published a letter from researchers with estimates of the death toll in Gaza from Israel’s nine-month invasion.

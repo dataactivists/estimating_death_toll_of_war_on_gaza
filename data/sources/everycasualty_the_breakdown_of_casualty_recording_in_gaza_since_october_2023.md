@@ -1,3 +1,5 @@
+https://everycasualty.org/the-breakdown-of-casualty-recording-in-gaza-since-october-2023/
+
 # The breakdown of casualty recording in Gaza since October 2023 - Every Casualty Counts
 
 #### Professor Mike Spagat, Chair of Every Casualty Counts, explains how and why the casualty recording system in Gaza has deteriorated, and what we can still learn from the information available.

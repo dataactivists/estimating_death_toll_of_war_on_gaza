@@ -1,3 +1,5 @@
+https://www.motherjones.com/politics/2024/10/us-israel-funding-gaza-palestine-deaths-october-100000-17-billion/
+
 # Report: In one year, more than 100,000 deaths in Gaza—aided by over $17.9 billion from the US
 
 On October 7, 2024, the Costs of War Project at Brown University released two new reports. [One report](https://watson.brown.edu/costsofwar/files/cow/imce/papers/2023/2024/Costs%20of%20War_US%20Support%20Since%20Oct%207%20FINAL%20v2.pdf) from the military-research group details how much the United States government has spent aiding the Israeli military between October 2023 and September 2024. The other gathers and evaluates previously published data to [estimate the human cost](https://watson.brown.edu/costsofwar/papers/2024/IndirectDeathsGaza) of this past year’s unrelenting violence.

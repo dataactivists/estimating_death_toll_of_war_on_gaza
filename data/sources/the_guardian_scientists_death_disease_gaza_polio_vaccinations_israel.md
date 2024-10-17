@@ -1,3 +1,5 @@
+https://www.theguardian.com/commentisfree/article/2024/sep/05/scientists-death-disease-gaza-polio-vaccinations-israel
+
 # Scientists are closing in on the true, horrifying scale of death and disease in Gaza
 
 A pause for polio vaccinations is welcome, but the disease’s presence is a window on the true cost of Israel’s war 

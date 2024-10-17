@@ -1,3 +1,5 @@
+https://www.thelancet.com/action/showPdf?pii=S0140-6736%2824%2901169-3
+
 # Counting the dead in Gaza: difficult but essential
 
 By June 19, 2024, 37,396 people had been killed in the Gaza Strip since the attack by Hamas and the Israeli invasion in October, 2023, according to the Gaza Health Ministry, as reported by the UN Office for the Coordination of Humanitarian Affairs. [1] The Ministry’s figures have been contested by the Israeli authorities, although they have been accepted as accurate by Israeli intelligence services,[2] the UN, and WHO. These data are supported by independent analyses, comparing changes in the number of deaths of UN Relief and Works Agency (UNRWA) staff with those reported by the Ministry,[3] which found claims of data fabrication implausible.[4] 
