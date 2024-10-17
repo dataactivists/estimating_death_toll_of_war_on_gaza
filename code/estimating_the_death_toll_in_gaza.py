@@ -219,5 +219,6 @@ chart_legend = (
 chart = alt.hconcat(chart_combined, chart_legend).resolve_scale(color='independent')
 
 chart.save('../charts/official_vs_estimates.png')
+chart.save('../charts/official_vs_estimates.html')
 
 chart
