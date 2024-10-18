@@ -58,7 +58,7 @@ While some researchers find their resilience [remarkable](https://aoav.org.uk/20
 
 The need for the MoH to only report the deaths due to direct military action witnessed by healthcare professionals and largely identified (deaths that are *undeniably due to war* and *undeniably real*) is vindicated by the onslaught of scepticism these figures *still* generate in the media (see the important work done by [Newscord](https://www.instagram.com/newscord_org/) and [Accountable Media](https://www.instagram.com/accountablemedia48/) in documenting the erasure of Palestinian suffering in media), politics, and often the general public: if the MoH had strived to paint a more representative picture, at the inevitable expense of having less hard data to buttress its claims, it's reasonable to presume that the only figures being reported outside of Gaza today would be those of the Israeli government (who until recently refused to acknowledge any civilian deaths). Thanks to MoH's risk-averse approach, the casualty data made public has at least some legitimacy.
 
-However, the limitations of this methodology become more and more apparent as the war goes on. Despite the indisputability of Palestinian suffering before the start of the war, the MoH's reporting strategy was not designed for genocide. It was not designed for a *year* of continued armed aggression, for a year of siege, a year of targeting medical staff, a year of that figure growing from 5 to 10 to 20 to 40 thousand, a year of unwavering Western weapon sales to Israel, a year of the media manufacturing consent for genocide. In those conditions, the methodology is self-defeating: the dead accumulate, capacity for reporting [falls](https://airwars.org/conflict/israel-and-gaza-2023/), and the resulting decrease in numbers is paraded as a positive sign, removing any sense of urgency for support. When one pushes this reasoning to its logical extreme (complete collapse of the state apparatus and healthcare infrastructure, the silencing of every journalist, etc.), the official counts will indeed stop increasing, and genocide will have officially stopped.
+However, the limitations of this methodology become more and more apparent as the war goes on. Despite the indisputability of Palestinian suffering before the start of the war, the MoH's reporting strategy was not designed for genocide. It was not designed for a *year* of continued armed aggression, for a year of siege, a year of targeting medical staff, a year of that figure growing from 5 to 10 to 20 to 40 thousand, a year of unwavering Western weapon sales to Israel, a year of the media manufacturing consent for genocide. In those conditions, the methodology is self-defeating: the dead accumulate, capacity for reporting [falls](https://airwars.org/conflict/israel-and-gaza-2023/), and the resulting decrease in numbers is paraded as a positive sign, dampening the sense of urgency for support. When one pushes this reasoning to its logical extreme (complete collapse of the state apparatus and healthcare infrastructure, the silencing of every journalist, etc.), the official counts will indeed stop increasing, and genocide will have officially stopped.
 
 ## Expert estimates of the human cost of the war on Gaza
 
@@ -92,19 +92,17 @@ Explicitly described as an underestimate: "*These are the most conservative esti
 
 Prof Devi Sridhar, chair of global public health at the University of Edinburgh, estimated that the death toll could reach 335,000 by the end of 2024, based on extrapolations from earlier studies and ongoing conflict dynamics.
 
-Devi Sridhar's [previous estimate](https://www.theguardian.com/commentisfree/2023/dec/29/health-organisations-disease-gaza-population-outbreaks-conflict) was 500.000 by Dec 2024, which she revised based on The Lancet study's estimate.
+Devi Sridhar's [previous estimate](https://www.theguardian.com/commentisfree/2023/dec/29/health-organisations-disease-gaza-population-outbreaks-conflict) was 500.000 by Dec 2024, which she revised based on The Lancet study's estimate. She explicitly acknowledged that this revised figure was based on a "very conservative" estimate.
 
-The Sridhar's estimate has been quoted as the lower bound of the true death toll by [Francesca Albanese, UN Special Rapporteur on occupied Palestinian territories](https://x.com/FranceskAlbs/status/1832060081245929810), who gave a range of 15-20% of the population (386.000-440.000). Though Albanese is one of the leading experts on Gaza, and her post, while building on Sridhar's estimate, stands on its own, we chose not to include it as a separate estimate in order to keep with a conservative approach to this article.
-
-Explicitly described as an underestimate.
+The Sridhar's estimate has been quoted as the lower bound of the true death toll by [Francesca Albanese, UN Special Rapporteur on occupied Palestinian territories](https://x.com/FranceskAlbs/status/1832060081245929810), who gave a range of 15-20% of the population (386.000-440.000). Though Albanese is one of the leading experts on Gaza and her post, while building on Sridhar's estimate, could stand on its own, we chose not to include it as a separate estimate, in order to keep with a conservative approach to this article.
 
 ## Reconciling the estimates
 
-We reviewed the estimates made in the last year by researchers from London School of Hygiene and Tropical Medicine, Johns Hopkins Center for Humanitarian Health, University of Edinburgh, Birzeit University, among others. After extracting their estimates, we drew a trendline through the estimates to reconcile their estimates. The code, data, and charts are available on [GitHub](https://github.com/dataactivists/estimating_the_death_toll_in_gaza/). Here's the resulting chart:
+We reviewed the analyses linked above and, after extracting the figures, drew a trendline to reconcile the estimates. The code, data, and charts are available on [GitHub](https://github.com/dataactivists/estimating_the_death_toll_in_gaza/). Here's the resulting chart:
 
 ![](../charts/official_vs_estimates.png)
 
-Compare with the chart given in the introduction: these estimates dwarf the official counts, and yet **every estimate provided here is *explicitly* described as "*conservative*" by its authors**. The reasons for this are multiple: the While extracting estimates, we also chose the lower bounds whenever a range was given.
+Compare with the chart given in the introduction: these estimates dwarf the official counts, and yet **every estimate provided here is *explicitly* described as "*conservative*" by its authors**. The reasons for this are multiple: challenges in data collection, the potential for underestimation in conflict zones, as well as the political climate. While extracting estimates, we also chose the lower bounds whenever a range was given.
 
 To repeat: the red line you see in this chart, which indicates that the death toll today is nearing 200,000 dead, is extrapolated from the **most conservative estimates**, for a conflict that is already deadly beyond comparison across a range of lenses.
 
@@ -112,7 +110,8 @@ The trendline here does not show an inflection point, but seems linear until 202
 
 - Famine has set in Gaza ("[96% of Gaza's […] in crisis levels of hunger or worse](https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/docs/IPC_Gaza_Strip_Acute_Food_Insecurity_MaySept2024_Special_Snapshot.pdf)")
 - Epidemics are already observed and more are "*virtually guaranteed and will be absolutely devastating, resulting in tens of thousands more dead, most of them young children*"
-- The [deliberate blocking of humanitarian aid](https://www.motherjones.com/politics/2024/09/israel-blocked-huminitarian-aid-gaza-palestine-biden-anthony-blinken/) is continuing, disposing of the rubble and reconstruction of infrastructure could take [80 years and cost $80bn](https://www.bloomberg.com/graphics/2024-gaza-who-will-pay-to-rebuild/)
+- The [deliberate blocking of humanitarian aid](https://www.motherjones.com/politics/2024/09/israel-blocked-huminitarian-aid-gaza-palestine-biden-anthony-blinken/) is continuing
+- Disposing of the rubble and reconstruction of infrastructure could take [80 years and cost $80bn](https://www.bloomberg.com/graphics/2024-gaza-who-will-pay-to-rebuild/)
 - Unexploded ordnances
 - Water contamination
 - Development complications for malnourished babies
@@ -126,7 +125,7 @@ The discrepancy between official counts and expert estimates shows that the task
 
 Accurate casualty reporting in conflict zones is crucial:
 
-- it inform the scale and nature of humanitarian aid required
+- it informs the scale and nature of humanitarian aid required
 - it plays a role in assessments of proportionality and potential war crimes investigations
 - it can influence peace negotiations and conflict resolution efforts
 - it is required for historical memory and post-conflict reconciliation efforts
