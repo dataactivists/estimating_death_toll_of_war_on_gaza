@@ -1,4 +1,4 @@
-# Estimating the Death Toll in Gaza
+# Estimating the Death Toll of the War on Gaza
 
 ## Introduction
 
