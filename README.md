@@ -4,11 +4,11 @@ Since the start of the war on Gaza on Oct 7 2023, the Ministry of Health (MoH) a
 
 ![](./charts/official_moh_counts.png)
 
-Notwithstanding political motivations, the accuracy of this data is not under question. However, an increasing number of experts argue it significantly underestimates the true death toll of the war waged by Israel.
+The accuracy of this data has been corroborated by independent analyses. However, an increasing number of experts argue it significantly underestimates the true death toll of the war waged by Israel.
 
-In this article, we will attempt to provide an analysis of the MoH methodology, the exacerbating challenges that it's facing as war goes on, and the estimates from independent researchers and humanitarian organisations. Our objective, more than a year into the ongoing genocide, is to advocate for a more accurate picture of the horror that unfolds in Gaza.
+In this article, we will attempt to provide an analysis of the MoH methodology, the exacerbating challenges it faces as the war continues, and estimates from independent researchers and humanitarian organisations. Our objective, more than a year into the ongoing genocide, is to advocate for a more accurate picture of the human cost of the war that unfolds in Gaza.
 
-Given the length of the article, below is the chart that we have produced from reviewing expert estimates. These staggering numbers are still a **conservative estimate** of the true death toll of the Gaza genocide.
+Given the length of the article, below is the result of our review of expert estimates. These numbers far exceed official counts, while being based on *conservative estimates* of the true death toll of the Gaza genocide.
 
 ![](./charts/official_vs_estimates.png)
 
