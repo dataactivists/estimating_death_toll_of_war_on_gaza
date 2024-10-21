@@ -53,11 +53,8 @@ feb_6_official = 27958
 
 # from https://aoav.org.uk/wp-content/uploads/2024/02/gaza_projections_report.pdf
 aoav_base_projection = 58260
-# inclusion of epidemic scenario based on https://www.gazahealthcareletters.org/usa-letter-oct-2-2024
-aoav_base_epidemic_projection = 66720
 
 aoav_base_estimate = feb_6_official + aoav_base_projection
-aoav_high_estimate = feb_6_official + aoav_base_epidemic_projection
 
 # %%
 # independent estimates from different sources
@@ -70,22 +67,8 @@ estimates = [
         'title': 'Counting the dead in Gaza: difficult but essential',
     },
     {
-        'date': '2024/12/31',
-        'estimate': 335500,
-        'label': 'D. Sridhar/F. Albanese',
-        'url': 'https://www.theguardian.com/commentisfree/article/2024/sep/05/scientists-death-disease-gaza-polio-vaccinations-israel',
-        'title': 'Scientists are closing in on the true, horrifying scale of death and disease in Gaza',
-    },
-    {
         'date': '2024/08/06',
         'estimate': aoav_base_estimate,
-        'label': '',
-        'url': 'https://aoav.org.uk/wp-content/uploads/2024/02/gaza_projections_report.pdf',
-        'title': 'Crisis in Gaza: Scenario-based Health Impact Projections, Report One: 7 February to 6 August 2024',
-    },
-    {
-        'date': '2024/08/06',
-        'estimate': aoav_high_estimate,
         'label': 'Crisis in Gaza',
         'url': 'https://aoav.org.uk/wp-content/uploads/2024/02/gaza_projections_report.pdf',
         'title': 'Crisis in Gaza: Scenario-based Health Impact Projections, Report One: 7 February to 6 August 2024',
@@ -96,6 +79,13 @@ estimates = [
         'label': 'Gaza Healthcare Letters (USA)',
         'url': 'https://www.gazahealthcareletters.org/usa-letter-oct-2-2024',
         'title': 'USA Letter | October 2 — Gaza Healthcare Letters',
+    },
+    {
+        'date': '2024/12/31',
+        'estimate': 335500,
+        'label': 'D. Sridhar/F. Albanese',
+        'url': 'https://www.theguardian.com/commentisfree/article/2024/sep/05/scientists-death-disease-gaza-polio-vaccinations-israel',
+        'title': 'Scientists are closing in on the true, horrifying scale of death and disease in Gaza',
     },
 ]
 
