@@ -65,30 +65,35 @@ estimates = [
     {
         'date': '2024/06/19',
         'estimate': 186980,
+        'label': 'The Lancet',
         'url': 'https://www.thelancet.com/action/showPdf?pii=S0140-6736%2824%2901169-3',
         'title': 'Counting the dead in Gaza: difficult but essential',
     },
     {
         'date': '2024/12/31',
         'estimate': 335500,
+        'label': 'D. Sridhar/F. Albanese',
         'url': 'https://www.theguardian.com/commentisfree/article/2024/sep/05/scientists-death-disease-gaza-polio-vaccinations-israel',
         'title': 'Scientists are closing in on the true, horrifying scale of death and disease in Gaza',
     },
     {
         'date': '2024/08/06',
         'estimate': aoav_base_estimate,
+        'label': '',
         'url': 'https://aoav.org.uk/wp-content/uploads/2024/02/gaza_projections_report.pdf',
         'title': 'Crisis in Gaza: Scenario-based Health Impact Projections, Report One: 7 February to 6 August 2024',
     },
     {
         'date': '2024/08/06',
         'estimate': aoav_high_estimate,
+        'label': 'Crisis in Gaza',
         'url': 'https://aoav.org.uk/wp-content/uploads/2024/02/gaza_projections_report.pdf',
         'title': 'Crisis in Gaza: Scenario-based Health Impact Projections, Report One: 7 February to 6 August 2024',
     },
     {
         'date': '2024/10/02',
         'estimate': 118908,
+        'label': 'Gaza Healthcare Letters (USA)',
         'url': 'https://www.gazahealthcareletters.org/usa-letter-oct-2-2024',
         'title': 'USA Letter | October 2 — Gaza Healthcare Letters',
     },
@@ -120,7 +125,7 @@ df_estimates_weighted = df_estimates.merge(
         columns={'report_date': 'date', 'killed_cum': 'estimate'}
     ),
     how='outer',
-)
+).fillna('')
 
 df_estimates_weighted
 
@@ -157,10 +162,21 @@ chart_estimates = (
     )
 )
 
+# label for scatter plot
+chart_label = (
+    alt.Chart(df_estimates_weighted)
+   .mark_text(dx=-10, dy=0, align='right', baseline='middle', fontWeight='bold')
+   .encode(
+        alt.X('date:T'),
+        alt.Y('estimate:Q'),
+        alt.Text('label:N'),
+    )
+)
+
 # trendline for scatter plot
 chart_trendline = (
     alt.Chart(df_estimates_weighted)
-    .mark_line(color='red', strokeDash=[5, 5])
+    .mark_line(color='red', strokeDash=[5, 5], size=4)
     .transform_regression(
         on='date',
         regression='estimate',
@@ -175,7 +191,7 @@ chart_trendline = (
 
 # combine scatter plot and trendline
 chart_estimates_trend = (
-    alt.layer(chart_estimates, chart_trendline)
+    alt.layer(chart_estimates, chart_trendline, chart_label)
     .properties(
         title='Estimates'
     )
@@ -205,7 +221,8 @@ chart_legend = (
     alt.Chart({
         'values': [
             {'category': 'Official', 'color': 'black'},
-            {'category': 'Estimate', 'color': 'red'}
+            {'category': 'Estimate (trend)', 'color': 'red'},
+            {'category': 'Individual estimates', 'color': '#82a1c2'}
         ]
     })
     .mark_point(filled=True, size=100)
