@@ -84,7 +84,9 @@ Explicitly described as an underestimate: "*Expert judgements and data from othe
 
 ### [Gaza Healthcare Letters - USA Letter | October 2](https://www.gazahealthcareletters.org/usa-letter-oct-2-2024)
 
-The USA letter gives the following estimate of indirect deaths: 10.000 people buried under the rubble, a conservative estimate of 62,413 deaths from malnutrition and disease (based on [IPC's estimates](https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/manual/IPC_Technical_Manual_3_Final.pdf) of mortality due to catastrophe and emergency levels of starvation), and a conservative estimate of 5.000 deaths in patients with chronic diseases. In addition to the official war-related deaths, the total represents "*at least 118,908*". This estimate does not include estimated deaths from infectious diseases, birth complications, etc.
+The USA letter gives the following estimate of indirect deaths: 10.000 people buried under the rubble, a conservative estimate of 62,413 deaths from malnutrition and disease (based on [IPC's estimates](https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/manual/IPC_Technical_Manual_3_Final.pdf) of mortality due to catastrophe and emergency levels of starvation), and a conservative estimate of 5.000 deaths in patients with chronic diseases. In addition to the official war-related deaths, the total represents "*at least 118,908*".
+
+This estimate *does not include* estimated deaths from infectious diseases, birth complications, etc., which account for 8-20% of deaths in the 
 
 Explicitly described as an underestimate: "*These are the most conservative estimates of the death toll that can be made with the given available data as of September 30, 2024. It is highly likely that the real number of deaths in Gaza from this conflict is far higher than this most conservative estimate.*"
 
