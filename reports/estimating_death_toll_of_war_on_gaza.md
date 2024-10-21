@@ -78,29 +78,29 @@ More than that, given the above description of the official methodology, it is e
 
 4 main sources of estimates have been selected based on the credibility of the authors, the availability of a methodology, and their acceptance in the humanitarian/scientific literature. Informal sources exist - medics and journalists on the ground consistently maintain that the true death toll is several times higher than the official figures (with estimates anywhere from 5 to 10+ times more): these estimates are not included, but do corroborate the magnitude of the numbers given below.
 
-### [The Lancet - Counting the dead in Gaza: difficult but essential](https://www.thelancet.com/action/showPdf?pii=S0140-6736%2824%2901169-3)
+### [The Lancet - Counting the dead in Gaza: difficult but essential](https://www.thelancet.com/action/showPdf?pii=S0140-6736%2824%2901169-3) - 186.000 estimated - by June 2024
 
 A letter published in The Lancet by researchers Dr. Rasha Khatib, Dr. Martin McKee, and Dr. Salim Yusuf estimated that up to 186.000 deaths could be attributable to the conflict as of June 2024. This estimate uses a low multiplier of 4 indirect deaths for every direct death reported officially, given that historical casualty data shows that indirect deaths represent 3-15 times the number of direct deaths.
 
 Explicitly described as an underestimate: "*a conservative estimate of four indirect deaths per one direct death*"
 
-### [Crisis in Gaza - Scenario-based Health Impact Projections, Report One: 7 February to 6 August 2024](https://aoav.org.uk/wp-content/uploads/2024/02/gaza_projections_report.pdf)
+### [Crisis in Gaza - Scenario-based Health Impact Projections, Report One: 7 February to 6 August 2024](https://aoav.org.uk/wp-content/uploads/2024/02/gaza_projections_report.pdf) - 58.260 to 66.720 estimated - by August 2024
 
 A report by humanitarian experts projected potential death tolls under different scenarios for the period of February to August 2024, based on a "*combination of publicly available data, expert consultations, and peer-reviewed research to estimate excess deaths, taking into account the limitations and biases of different data sources*". Even in base scenarios without major escalation or epidemics, the projected excess deaths significantly exceeded official counts.
 
-The ceasefire scenario is unfortunately not valid today and while there is a [case to be made](https://truthout.org/articles/israel-has-created-extermination-zone-in-north-gaza-advocates-warn/) for the escalation scenario (especially with the spread of Israel's war to Lebanon), we only included the base scenario estimates, with and without epidemics. We included the epidemics scenario based on the statement in the Gaza Healthcare Letters, signed by 99 US health professionals returning from Gaza, that "*epidemics are raging in Gaza*".
+The ceasefire scenario is unfortunately not valid today.There is a [case to be made](https://truthout.org/articles/israel-has-created-extermination-zone-in-north-gaza-advocates-warn/) for the escalation scenario (especially with the spread of Israel's war to [Lebanon](https://www.politico.eu/article/israel-expand-invasion-south-lebanon/) and current events in [Northern Gaza](https://www.theguardian.com/world/2024/oct/20/israeli-strike-on-gaza-multi-storey-residential-building-reportedly-kills-dozens)) and for the epidemics scenario (the [Gaza Healthcare Letters](https://www.gazahealthcareletters.org/usa-letter-oct-2-2024), signed by 99 US health professionals returning from Gaza, holds that "*epidemics are raging in Gaza*"). However, we only included the *base scenario estimate without epidemics*.
 
 Explicitly described as an underestimate: "*Expert judgements and data from other conflicts may have led us to make conservative estimates*"
 
-### [Gaza Healthcare Letters - USA Letter | October 2](https://www.gazahealthcareletters.org/usa-letter-oct-2-2024)
+### [Gaza Healthcare Letters - USA Letter](https://www.gazahealthcareletters.org/usa-letter-oct-2-2024) - 118.908 estimated - by October 2024
 
 The USA letter gives the following estimate of indirect deaths: 10.000 people buried under the rubble, a conservative estimate of 62,413 deaths from malnutrition and disease (based on [IPC's estimates](https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/manual/IPC_Technical_Manual_3_Final.pdf) of mortality due to catastrophe and emergency levels of starvation), and a conservative estimate of 5.000 deaths in patients with chronic diseases. In addition to the official war-related deaths, the total represents "*at least 118,908*".
 
-This estimate *does not include* estimated deaths from infectious diseases, birth complications, etc., which account for 8-20% of deaths in the 
+This estimate *does not include* estimated deaths from infectious diseases, birth complications, etc. The most detailed estimate we have ([Crisis in Gaza](https://aoav.org.uk/wp-content/uploads/2024/02/gaza_projections_report.pdf)) places those deaths at 8-20% of total, for base and epidemics scenario, respectively.
 
 Explicitly described as an underestimate: "*These are the most conservative estimates of the death toll that can be made with the given available data as of September 30, 2024. It is highly likely that the real number of deaths in Gaza from this conflict is far higher than this most conservative estimate.*"
 
-### [Devi Sridhar - Scientists are closing in on the true, horrifying scale of death and disease in Gaza](https://www.theguardian.com/commentisfree/article/2024/sep/05/scientists-death-disease-gaza-polio-vaccinations-israel)
+### [Devi Sridhar - Scientists are closing in on the true, horrifying scale of death and disease in Gaza](https://www.theguardian.com/commentisfree/article/2024/sep/05/scientists-death-disease-gaza-polio-vaccinations-israel) - 335.000 estimated - by December 2024
 
 Prof Devi Sridhar, chair of global public health at the University of Edinburgh, estimated that the death toll could reach 335,000 by the end of 2024, based on extrapolations from earlier studies and ongoing conflict dynamics.
 
