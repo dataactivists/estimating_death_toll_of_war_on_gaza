@@ -1,5 +1,13 @@
 # Estimating the Death Toll of the War on Gaza
 
+- [Introduction](#introduction)
+- [Methodology used by MoH and GMO](#methodology-used-by-moh-and-gmo)
+- [Increasing challenges to the MoH's methodology](#increasing-challenges-to-the-mohs-methodology)
+- [Limitations of the MoH methodology](#limitations-of-the-moh-methodology)
+- [Expert estimates of the human cost of the war on Gaza](#expert-estimates-of-the-human-cost-of-the-war-on-gaza)
+- [Reconciling the estimates](#reconciling-the-estimates)
+- [Going forward](#going-forward)
+
 ## Introduction
 
 Since the start of the war on Gaza on Oct 7 2023, the Ministry of Health (MoH) and Government Media Office (GMO) have been producing statistical reports of casualties. As of Oct 17 2024, the official number of casualties stands at 43.157.
