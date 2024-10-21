@@ -76,7 +76,7 @@ estimates = [
     {
         'date': '2024/10/02',
         'estimate': 118908,
-        'label': 'Gaza Healthcare Letters (USA)',
+        'label': 'Gaza Healthcare Letters',
         'url': 'https://www.gazahealthcareletters.org/usa-letter-oct-2-2024',
         'title': 'USA Letter | October 2 — Gaza Healthcare Letters',
     },
@@ -126,13 +126,13 @@ df_estimates_weighted
 # chart with official counts
 chart_official = (
     alt.Chart(df_official[['report_date', 'killed_cum']])
-    .mark_line(color='black', size=3)
+    .mark_line(color='black', size=6)
     .encode(
         alt.X('report_date:T').title(None),
         alt.Y('killed_cum:Q').title('Total casualties'),
     )
     .properties(
-        title='Official numbers'
+        title='Official figures'
     )
 )
 
@@ -142,7 +142,7 @@ chart_official
 # chart with estimates as scatter plot
 chart_estimates = (
     alt.Chart(df_estimates_weighted)
-    .mark_circle()
+    .mark_circle(size=6)
     .encode(
         alt.X('date:T'),
         alt.Y('estimate:Q'),
@@ -155,8 +155,8 @@ chart_estimates = (
 # label for scatter plot
 chart_label = (
     alt.Chart(df_estimates_weighted)
-    .mark_text(dx=-10, dy=0, align='right', baseline='middle', fontWeight='bold')
-    .encode(
+   .mark_text(dx=-10, dy=0, align='right', baseline='middle', fontWeight='bold', fontSize=17)
+   .encode(
         alt.X('date:T'),
         alt.Y('estimate:Q'),
         alt.Text('label:N'),
@@ -166,16 +166,15 @@ chart_label = (
 # trendline for scatter plot
 chart_trendline = (
     alt.Chart(df_estimates_weighted)
-    .mark_line(color='red', strokeDash=[5, 5], size=4)
+    .mark_line(color='red', strokeDash=[1, 10], strokeCap='round', size=8, opacity=.6)
     .transform_regression(
         on='date',
         regression='estimate',
         method='log',
-        # order=3,
     )
     .encode(
-        alt.X('date:T').title(None),
-        alt.Y('estimate:Q').title('Total casualties').scale(domain=[0, 400000]),
+        alt.X('date:T').title(None).axis(labelFontSize=17, format='%b %y'),
+        alt.Y('estimate:Q').title('Total casualties').scale(domain=[0, 400000]).axis(labelFontSize=17),
     )
 )
 
@@ -194,10 +193,13 @@ chart_estimates_trend
 chart_combined = (
     alt.layer(chart_official, chart_estimates_trend)
     .properties(
-        title=[
-            'Official casuaty numbers',
+        title={
+            'text': [
+            'Official casuaty figures',
             'vs independent estimates'
-        ],
+            ],
+            'fontSize': 21
+        },
         width=600,
         height=400,
     )
@@ -211,13 +213,13 @@ chart_legend = (
     alt.Chart({
         'values': [
             {'category': 'Official', 'color': 'black'},
-            {'category': 'Estimate (trend)', 'color': 'red'},
-            {'category': 'Individual estimates', 'color': '#82a1c2'}
+            {'category': 'Estimates', 'color': '#82a1c2'},
+            {'category': 'Trendline', 'color': 'red'},
         ]
     })
-    .mark_point(filled=True, size=100)
+    .mark_point(filled=True, size=300)
     .encode(
-        alt.Y('category:N').axis(orient='right').title(None).sort(None),
+        alt.Y('category:N').axis(orient='right', labelFontSize=17).title(None).sort(None),
         alt.Color('color:N', scale=None)
     )
 )
