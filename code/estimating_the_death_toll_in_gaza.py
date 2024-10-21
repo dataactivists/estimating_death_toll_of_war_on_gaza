@@ -155,8 +155,8 @@ chart_estimates = (
 # label for scatter plot
 chart_label = (
     alt.Chart(df_estimates_weighted)
-   .mark_text(dx=-10, dy=0, align='right', baseline='middle', fontWeight='bold')
-   .encode(
+    .mark_text(dx=-10, dy=0, align='right', baseline='middle', fontWeight='bold')
+    .encode(
         alt.X('date:T'),
         alt.Y('estimate:Q'),
         alt.Text('label:N'),
