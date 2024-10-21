@@ -10,11 +10,11 @@ The accuracy of this data has been corroborated by independent analyses. However
 
 In this article, we will attempt to provide an analysis of the MoH methodology, the exacerbating challenges it faces as the war continues, and estimates from independent researchers and humanitarian organisations. Our objective, more than a year into the ongoing genocide, is to advocate for a more accurate picture of the human cost of the war that unfolds in Gaza.
 
-Given the length of the article, below is the result of our review of expert estimates. These numbers far exceed official counts, while being based on **conservative estimates** of the true death toll of the Gaza genocide.
+Below is the final result of our review of expert estimates. These numbers far exceed official counts, while being based on **conservative estimates** of the true death toll of the Gaza genocide.
 
 ![](../charts/official_vs_estimates.png)
 
-**Today, we are nearing 200.000 dead.**
+According to these conservative estimates, **today we are nearing 200.000 dead.**
 
 ## Methodology used by MoH and GMO
 
@@ -76,7 +76,7 @@ Explicitly described as an underestimate: "*a conservative estimate of four indi
 
 ### [Crisis in Gaza - Scenario-based Health Impact Projections, Report One: 7 February to 6 August 2024](https://aoav.org.uk/wp-content/uploads/2024/02/gaza_projections_report.pdf)
 
-A report by humanitarian experts projected potential death tolls under different scenarios for the period of February to August 2024, based on "*combination of publicly available data, expert consultations, and peer-reviewed research to estimate excess deaths, taking into account the limitations and biases of different data sources*". Even in base scenarios without major escalation or epidemics, the projected excess deaths significantly exceeded official counts.
+A report by humanitarian experts projected potential death tolls under different scenarios for the period of February to August 2024, based on a "*combination of publicly available data, expert consultations, and peer-reviewed research to estimate excess deaths, taking into account the limitations and biases of different data sources*". Even in base scenarios without major escalation or epidemics, the projected excess deaths significantly exceeded official counts.
 
 The ceasefire scenario is unfortunately not valid today and while there is a [case to be made](https://truthout.org/articles/israel-has-created-extermination-zone-in-north-gaza-advocates-warn/) for the escalation scenario (especially with the spread of Israel's war to Lebanon), we only included the base scenario estimates, with and without epidemics. We included the epidemics scenario based on the statement in the Gaza Healthcare Letters, signed by 99 US health professionals returning from Gaza, that "*epidemics are raging in Gaza*".
 
