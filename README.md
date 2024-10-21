@@ -1,6 +1,6 @@
 # Estimating the death toll in Gaza
 
-Intro below: full report can be found [in the reports directory](https://github.com/dataactivists/estimating_death_toll_of_war_on_gaza/blob/main/reports/estimating_death_toll_of_war_on_gaza.md).
+Intro below: **full report can be found [in the reports directory](https://github.com/dataactivists/estimating_death_toll_of_war_on_gaza/blob/main/reports/estimating_death_toll_of_war_on_gaza.md)**.
 
 Since the start of the war on Gaza on Oct 7 2023, the Ministry of Health (MoH) and Government Media Office (GMO) have been producing statistical reports of casualties. As of Oct 17 2024, the official number of casualties stands at 43.157.
 
@@ -14,4 +14,4 @@ Below is the result of our review of expert estimates. These numbers far exceed 
 
 ![](./charts/official_vs_estimates.png)
 
-According to these conservative estimates, *today we are nearing 200.000 dead.*
+According to these conservative estimates, *today we are beyond 200.000 dead.*
