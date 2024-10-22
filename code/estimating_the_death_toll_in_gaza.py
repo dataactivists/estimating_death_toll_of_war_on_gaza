@@ -126,10 +126,11 @@ df_estimates_weighted
 # chart with official counts
 chart_official = (
     alt.Chart(df_official[['report_date', 'killed_cum']])
-    .mark_line(color='black', size=6)
+    .mark_line(size=6)
     .encode(
         alt.X('report_date:T').title(None),
         alt.Y('killed_cum:Q').title('Total casualties'),
+        color=alt.value('black')
     )
     .properties(
         title='Official figures'
@@ -149,11 +150,12 @@ chart_estimates = (
         alt.Size('estimate:Q').legend(None),
         alt.Tooltip(['date', 'estimate', 'title', 'url']),
         alt.Href('url:N'),
+        color=alt.value('#82a1c2')
     )
 )
 
 # label for scatter plot
-chart_label = (
+chart_labels = (
     alt.Chart(df_estimates_weighted)
    .mark_text(dx=-10, dy=0, align='right', baseline='middle', fontWeight='bold', fontSize=17)
    .encode(
@@ -166,7 +168,7 @@ chart_label = (
 # trendline for scatter plot
 chart_trendline = (
     alt.Chart(df_estimates_weighted)
-    .mark_line(color='red', strokeDash=[1, 10], strokeCap='round', size=8, opacity=.6)
+    .mark_line(strokeDash=[1, 10], strokeCap='round', size=8, opacity=.6)
     .transform_regression(
         on='date',
         regression='estimate',
@@ -175,12 +177,13 @@ chart_trendline = (
     .encode(
         alt.X('date:T').title(None).axis(labelFontSize=17, format='%b %y'),
         alt.Y('estimate:Q').title('Total casualties').scale(domain=[0, 400000]).axis(labelFontSize=17),
+        color=alt.value('red')
     )
 )
 
 # combine scatter plot and trendline
 chart_estimates_trend = (
-    alt.layer(chart_estimates, chart_trendline, chart_label)
+    alt.layer(chart_estimates, chart_trendline, chart_labels)
     .properties(
         title='Estimates'
     )
