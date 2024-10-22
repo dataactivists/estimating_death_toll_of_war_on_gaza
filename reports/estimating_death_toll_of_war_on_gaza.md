@@ -94,7 +94,7 @@ Explicitly described as an underestimate: "*Expert judgements and data from othe
 
 ### [Gaza Healthcare Letters - USA Letter](https://www.gazahealthcareletters.org/usa-letter-oct-2-2024) - 118.908 estimated as of October 2024
 
-The USA letter, pubslished in October 2024, gives the following estimate of indirect deaths: 10.000 people buried under the rubble, a conservative estimate of 62,413 deaths from malnutrition and disease (based on [IPC's estimates](https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/manual/IPC_Technical_Manual_3_Final.pdf) of mortality due to catastrophe and emergency levels of starvation), and a conservative estimate of 5.000 deaths in patients with chronic diseases. In addition to the official war-related deaths, the total represents "*at least 118,908*".
+The USA letter, published in October 2024, gives the following estimate of indirect deaths: 10.000 people buried under the rubble, a conservative estimate of 62,413 deaths from malnutrition and disease (based on [IPC's estimates](https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/manual/IPC_Technical_Manual_3_Final.pdf) of mortality due to catastrophe and emergency levels of starvation), and a conservative estimate of 5.000 deaths in patients with chronic diseases. In addition to the official war-related deaths, the total represents "*at least 118,908*".
 
 This estimate *does not include* estimated deaths from infectious diseases, birth complications, etc. The most detailed estimate we have ([Crisis in Gaza](https://aoav.org.uk/wp-content/uploads/2024/02/gaza_projections_report.pdf)) places those deaths at 8-20% of total, for base and epidemics scenario, respectively.
 
@@ -137,9 +137,9 @@ The deaths due to the effects of war will be long-ranging, and the inflection po
 
 ## Going forward
 
-The discrepancy between official counts and expert estimates shows that the task of accurately counting casualties in Gaza remains fraught with challenges. While official counts provide a baseline, they likely underestimate the true toll of the conflict due to methodological limitations and practical obstacles. Expert estimates, which factor in indirect deaths and use various projection methods, suggest that the actual death toll may be significantly higher, potentially approaching or exceeding 200.000 as of October 2024.
+The discrepancy between official counts and expert estimates shows that the task of accurately counting casualties in Gaza remains fraught with challenges. While official counts provide a baseline, they likely underestimate the true toll of the conflict due to methodological limitations and practical obstacles. **Conservative** expert estimates, which factor in indirect deaths and use various projection methods, suggest that the actual death toll may be significantly higher, exceeding 200.000 as of October 2024.
 
-Accurate casualty reporting in conflict zones is crucial:
+Accurate casualty reporting in conflict zones is vital:
 
 - it informs the scale and nature of humanitarian aid required
 - it plays a role in assessments of proportionality and potential war crimes investigations
