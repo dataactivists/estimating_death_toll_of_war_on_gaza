@@ -15,3 +15,5 @@ Below is the result of our review of expert estimates. These numbers far exceed 
 ![](./charts/official_vs_estimates.png)
 
 According to these conservative estimates, *today we are beyond 200.000 dead.*
+
+Read more in the [full report](https://github.com/dataactivists/estimating_death_toll_of_war_on_gaza/blob/main/reports/estimating_death_toll_of_war_on_gaza.md).
