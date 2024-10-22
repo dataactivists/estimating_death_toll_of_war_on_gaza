@@ -146,6 +146,12 @@ Accurate casualty reporting in conflict zones is vital:
 - it can influence peace negotiations and conflict resolution efforts
 - it is required for historical memory and post-conflict reconciliation efforts
 
+The official figures are the absolute lowest possible death toll of Israel's ongoing war. This fact lies outside of political leanings, outside of group membership. We will continue working on this issue, in collaboration with other organisations, experts, and journalists.
+
 As the conflict continues, it is crucial to support efforts for comprehensive and transparent casualty reporting. This includes protecting healthcare workers, journalists, and humanitarian staff who play vital roles in documenting the human cost of war.
 
 Only through an understanding of the conflict's impact can the international community respond effectively and work towards a resolution that prevents further loss of life.
+
+Going beyond those figures is a question of integrity for researchers and journalists. It is a question of  fairness and humanity  for politicians and decision-makers. It is about not letting the horror of genocide be overlooked or minimised in public discourse.
+
+It is about showing the true human cost of the war on Gaza.
