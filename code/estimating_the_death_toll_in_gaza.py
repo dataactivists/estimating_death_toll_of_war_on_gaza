@@ -198,7 +198,7 @@ chart_combined = (
     .properties(
         title={
             'text': [
-            'Official casuaty figures',
+            'Official casualty figures',
             'vs independent estimates'
             ],
             'fontSize': 21
