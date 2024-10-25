@@ -72,7 +72,7 @@ However, the limitations of this methodology become more and more apparent as th
 
 The MoH contends with the dilemma where bringing any change to its methodology, whether it increases or decreases the accuracy, will lead to the credibility of its data being further attacked. However, given the limitations of the MoH methodology, uncritically reporting the official figures further frames the conversation in most mainstream media, where, at best, the figures are presented as the absolute upper bound.
 
-Consequently, the work of independent researchers is vital in providing a counterweight to the MoH's limitations and attempting to estimate the true human cost of the war. The full death toll is even larger: it includes those killed by Israel during a year of genocide, but also the Israeli killed in the Hamas attack on October 7th 2024 and the thousands being killed by the IDF today in Lebanon. 
+Consequently, the work of independent researchers is vital in providing a counterweight to the MoH's limitations and attempting to estimate the true human cost of the war. The full death toll is even larger: it includes those killed by Israel during a year of genocide, but also the Israeli killed in the Hamas attack on October 7th 2024 and the thousands being killed by the IDF today in Lebanon.
 
 More than that, given the above description of the official methodology, it is evident that these counts do not claim to and cannot represent the true number of casualties of the war on Gaza. Reporting on expert estimates serves to acknowledge the full scale of human suffering, honouring victims who may not be included in official tallies. It provides a scientifically-grounded counterpoint to potential underreporting, maintaining integrity in casualty documentation. Importantly, these estimates challenge narratives that may downplay the severity of the conflict's impact on civilians.
 
@@ -152,6 +152,6 @@ As the conflict continues, it is crucial to support efforts for comprehensive an
 
 Only through an understanding of the conflict's impact can the international community respond effectively and work towards a resolution that prevents further loss of life.
 
-Going beyond those figures is a question of integrity for researchers and journalists. It is a question of  fairness and humanity  for politicians and decision-makers. It is about not letting the horror of genocide be overlooked or minimised in public discourse.
+Going beyond those figures is a question of integrity for researchers and journalists. It is a question of fairness and humanity for politicians and decision-makers. It is about not letting the horror of genocide be overlooked or minimised in public discourse.
 
 It is about showing the true human cost of the war on Gaza.
