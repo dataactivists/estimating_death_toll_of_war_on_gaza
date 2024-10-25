@@ -130,7 +130,7 @@ chart_official = (
     .encode(
         alt.X('report_date:T').title(None),
         alt.Y('killed_cum:Q').title('Total casualties'),
-        color=alt.value('black')
+        color=alt.value('black'),
     )
     .properties(
         title='Official figures'
@@ -150,15 +150,17 @@ chart_estimates = (
         alt.Size('estimate:Q').legend(None),
         alt.Tooltip(['date', 'estimate', 'title', 'url']),
         alt.Href('url:N'),
-        color=alt.value('#82a1c2')
+        color=alt.value('#82a1c2'),
     )
 )
 
 # label for scatter plot
 chart_labels = (
     alt.Chart(df_estimates_weighted)
-   .mark_text(dx=-10, dy=0, align='right', baseline='middle', fontWeight='bold', fontSize=17)
-   .encode(
+    .mark_text(
+        dx=-10, dy=0, align='right', baseline='middle', fontWeight='bold', fontSize=17
+    )
+    .encode(
         alt.X('date:T'),
         alt.Y('estimate:Q'),
         alt.Text('label:N'),
@@ -168,7 +170,7 @@ chart_labels = (
 # trendline for scatter plot
 chart_trendline = (
     alt.Chart(df_estimates_weighted)
-    .mark_line(strokeDash=[1, 10], strokeCap='round', size=8, opacity=.6)
+    .mark_line(strokeDash=[1, 10], strokeCap='round', size=8, opacity=0.6)
     .transform_regression(
         on='date',
         regression='estimate',
@@ -177,7 +179,7 @@ chart_trendline = (
     .encode(
         alt.X('date:T').title(None).axis(labelFontSize=17, format='%b %y'),
         alt.Y('estimate:Q').title('Total casualties').scale(domain=[0, 400000]).axis(labelFontSize=17),
-        color=alt.value('red')
+        color=alt.value('red'),
     )
 )
 
@@ -198,10 +200,10 @@ chart_combined = (
     .properties(
         title={
             'text': [
-            'Official casualty figures',
-            'vs independent estimates'
+                'Official casualty figures',
+                'vs independent estimates'
             ],
-            'fontSize': 21
+            'fontSize': 21,
         },
         width=600,
         height=400,
@@ -213,17 +215,19 @@ chart_combined
 # %%
 # make legend chart
 chart_legend = (
-    alt.Chart({
-        'values': [
-            {'category': 'Official', 'color': 'black'},
-            {'category': 'Estimates', 'color': '#82a1c2'},
-            {'category': 'Trendline', 'color': 'red'},
-        ]
-    })
+    alt.Chart(
+        {
+            'values': [
+                {'category': 'Official', 'color': 'black'},
+                {'category': 'Estimates', 'color': '#82a1c2'},
+                {'category': 'Trendline', 'color': 'red'},
+            ]
+        }
+    )
     .mark_point(filled=True, size=300)
     .encode(
         alt.Y('category:N').axis(orient='right', labelFontSize=17).title(None).sort(None),
-        alt.Color('color:N', scale=None)
+        alt.Color('color:N', scale=None),
     )
 )
 
