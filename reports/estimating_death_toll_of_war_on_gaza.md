@@ -84,7 +84,7 @@ A letter published in June 2024 in The Lancet by researchers Dr. Rasha Khatib, D
 
 Explicitly described as an underestimate: "*a conservative estimate of four indirect deaths per one direct death*"
 
-### [Crisis in Gaza - Scenario-based Health Impact Projections, Report One: 7 February to 6 August 2024](https://aoav.org.uk/wp-content/uploads/2024/02/gaza_projections_report.pdf) - 58.260 projected by August 2024
+### [Crisis in Gaza - Scenario-based Health Impact Projections, Report One: 7 February to 6 August 2024](https://aoav.org.uk/wp-content/uploads/2024/02/gaza_projections_report.pdf) - 86.218 projected by August 2024
 
 A report by humanitarian experts, published in February 2024, projected potential death tolls under different scenarios for the period of February to August 2024, based on a "*combination of publicly available data, expert consultations, and peer-reviewed research to estimate excess deaths, taking into account the limitations and biases of different data sources*". Even in base scenarios without major escalation or epidemics, the projected excess deaths significantly exceeded official counts.
 
