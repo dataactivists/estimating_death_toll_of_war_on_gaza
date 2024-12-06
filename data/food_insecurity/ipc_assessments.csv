@@ -1,0 +1,9 @@
+start_date,end_date,type,None,Stressed,Crisis,Emergency,Catastrophe,url
+2023-11-24,2023-12-07,current,0.0,0.07,0.34,0.42,0.17,https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/docs/IPC_Gaza_Acute_Food_Insecurity_Nov2023_Feb2024.pdf
+2023-12-08,2024-02-07,projected,0.0,0.0,0.21,0.53,0.26,https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/docs/IPC_Gaza_Acute_Food_Insecurity_Nov2023_Feb2024.pdf
+2024-02-15,2024-03-15,current,0.0,0.05,0.26,0.39,0.3,https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/docs/IPC_Gaza_Strip_Acute_Food_Insecurity_Feb_July2024_Special_Snapshot.pdf
+2024-03-16,2024-07-15,projected,0.0,0.0,0.12,0.38,0.5,https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/docs/IPC_Gaza_Strip_Acute_Food_Insecurity_Feb_July2024_Special_Snapshot.pdf
+2024-05-01,2024-06-15,current,0.004,0.05,0.51,0.29,0.15,https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/docs/IPC_Gaza_Strip_Acute_Food_Insecurity_MaySept2024_Special_Snapshot.pdf
+2024-06-16,2024-09-30,projected,0.0,0.04,0.41,0.33,0.22,https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/docs/IPC_Gaza_Strip_Acute_Food_Insecurity_MaySept2024_Special_Snapshot.pdf
+2024-09-01,2024-10-31,current,0.0,0.14,0.49,0.31,0.06,https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/docs/IPC_Gaza_Strip_Acute_Food_Insecurity_Malnutrition_Sep2024_Apr2025_Special_Snapshot.pdf
+2024-11-01,2025-04-30,projected,0.0,0.09,0.34,0.41,0.16,https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/docs/IPC_Gaza_Strip_Acute_Food_Insecurity_Malnutrition_Sep2024_Apr2025_Special_Snapshot.pdf
