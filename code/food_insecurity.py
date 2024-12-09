@@ -18,6 +18,7 @@
 
 # %%
 import datetime
+from typing import Dict, Union
 
 import altair as alt
 import pandas as pd
@@ -198,7 +199,7 @@ chart_assessments
 
 
 # %%
-def calculate_expected_dead(row: pd.Series, lower: bool = True):
+def calculate_expected_dead(row: pd.Series, lower: bool = True) -> Dict[str, int]:
     """
     Calculate expected dead based on IPC assessment and CDR.
 
@@ -210,7 +211,10 @@ def calculate_expected_dead(row: pd.Series, lower: bool = True):
     int: The expected number of dead.
     """
 
-    expected_dead = 0
+    expected_dead = {
+        'lower': 0,
+        'upper': 0,
+    }
 
     # acute food insecurity levels for which mortality is calculated
     levels = ['Emergency', 'Catastrophe']
@@ -223,32 +227,35 @@ def calculate_expected_dead(row: pd.Series, lower: bool = True):
         sub_pop = row[level] * gaza_pop_total
 
         # cdr
-        if lower is True:
-            cdr = ipc_cdr[level]['lower_bound']
-        else:
-            cdr = (
-                ipc_cdr[level]['upper_bound']
-                if ipc_cdr[level]['upper_bound'] is not None
-                else ipc_cdr[level]['lower_bound']
-            )
+        cdr_lower = ipc_cdr[level]['lower_bound']
+        cdr_upper = (
+            ipc_cdr[level]['upper_bound']
+            if ipc_cdr[level]['upper_bound'] is not None
+            else ipc_cdr[level]['lower_bound']
+        )
 
         # duration
         duration = (row['end_date'] - row['start_date']).days
 
         # expected dead for given level, cdr, duration
-        value = sub_pop * cdr * duration
-        value = int(value)
+        value_lower = int(sub_pop * cdr_lower * duration)
+        value_upper = int(sub_pop * cdr_upper * duration)
 
-        expected_dead += value
+        expected_dead['lower'] += value_lower
+        expected_dead['upper'] += value_upper
 
     return expected_dead
 
 
 # %%
-df_ipc['expected_dead_lower'] = df_ipc.apply(calculate_expected_dead, axis=1)
+expected_dead = df_ipc.apply(calculate_expected_dead, axis=1)
 
-df_ipc['expected_dead_upper'] = df_ipc.apply(
-    lambda x: calculate_expected_dead(x, lower=False), axis=1
+df_ipc = pd.concat(
+    [
+        df_ipc,
+        pd.json_normalize(expected_dead).rename(lambda x: f'expected_dead_{x}', axis=1),
+    ],
+    axis=1,
 )
 
 df_ipc
@@ -284,37 +291,44 @@ chart_ipc_cdr
 
 
 # %%
-def estimate_dead_for_date(df_ipc, col, date):
+def estimate_dead_for_date(
+    df_ipc: pd.DataFrame, date: Union[str, datetime.datetime] = datetime.date.today()
+) -> Dict[str, int]:
     """
     Estimate number of deaths based on IPC CDR for a specific date.
     """
 
+    estimates = {}
+
     date = pd.to_datetime(date)
+    estimates['date'] = date
 
     for i in range(len(df_ipc)):
         if df_ipc.loc[i, 'start_date'] <= date <= df_ipc.loc[i, 'end_date']:
-            estimate_base = df_ipc.loc[i - 1, col]
-            estimate_range = df_ipc.loc[i, col] - df_ipc.loc[i - 1, col]
-            period = (df_ipc.loc[i, 'end_date'] - df_ipc.loc[i - 1, 'end_date']).days
-            period_pro_rated = (date - df_ipc.loc[i - 1, 'end_date']).days
+            for bound in ['lower', 'upper']:
+                estimate_base = df_ipc.loc[i - 1, f'cumulative_{bound}']
+                estimate_range = (
+                    df_ipc.loc[i, f'cumulative_{bound}']
+                    - df_ipc.loc[i - 1, f'cumulative_{bound}']
+                )
+                period = (df_ipc.loc[i, 'end_date'] - df_ipc.loc[i - 1, 'end_date']).days
+                period_pro_rated = (date - df_ipc.loc[i - 1, 'end_date']).days
 
-            estimate = estimate_base + estimate_range / period * period_pro_rated
-            estimate = int(estimate)
+                estimate = estimate_base + estimate_range / period * period_pro_rated
+                estimate = int(estimate)
 
-            return estimate
+                estimates[bound] = estimate
+
+            return estimates
+
+    return None
 
 
 # %%
 # determine lower and upper bounds
-food_insecurity_lower = estimate_dead_for_date(
-    df_ipc=df_ipc, col='cumulative_lower', date=datetime.date.today()
-)
-food_insecurity_upper = estimate_dead_for_date(
-    df_ipc=df_ipc, col='cumulative_upper', date=datetime.date.today()
+food_insecurity_casualties = estimate_dead_for_date(
+    df_ipc=df_ipc, date=datetime.date.today()
 )
 
 # %%
-food_insecurity_lower
-
-# %%
-food_insecurity_upper
+food_insecurity_casualties
