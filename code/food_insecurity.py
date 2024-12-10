@@ -18,6 +18,7 @@
 
 # %%
 import datetime
+import sys
 from pathlib import Path
 from typing import Dict, Optional, Union
 
@@ -411,3 +412,53 @@ food_insecurity_casualties = estimate_deaths_for_date(
 )
 
 food_insecurity_casualties
+
+
+# %%
+def assess_food_insecurity(
+    file_path: str = None,
+    date: Union[str, datetime.datetime] = None,
+    save_charts: bool = True,
+) -> Dict[str, Union[Dict[str, int], alt.Chart]]:
+    """
+    Calculate expected deaths for a specific date given IPC assessments.
+    """
+
+    # load IPC assessments and clean the data.
+    df_ipc = load_and_preprocess_data(file_path)
+
+    # determine linear timeline across assessments.
+    df_ipc = create_linear_timeline(df_ipc)
+
+    # find gaps in assessments and interpolate values based on surrounding assessments.
+    df_ipc = find_assessment_gaps(df_ipc=df_ipc, interpolate=True)
+
+    # visualise evolution in IPC assessments
+    chart_assessments = generate_assessments_chart(
+        df_ipc,
+        title='Distribution of IPC phases over time',
+        save=save_charts,
+        filename='ipc_assessments.png',
+    )
+
+    # calculate expected deaths and cumulative totals
+    df_ipc = calculate_expected_cumulative_deaths(df_ipc)
+
+    # save cleaned data
+    df_ipc.to_csv(file_path.replace('.csv', '_clean.csv'), index=False)
+
+    # visualise deaths from IPC's phase assessments and CDR
+    charts_ipc_cdr = generate_ipc_cdr_chart(
+        df_ipc,
+        title='Deaths expected based on IPC\'s crude death rate (source: IPC)',
+        filename='ipc_cdr_deaths.png',
+    )
+
+    # estimate number of deaths based on IPC CDR for a specific date
+    food_insecurity_casualties = estimate_deaths_for_date(df_ipc, date=date)
+
+    return {
+        'food_insecurity_casualties': food_insecurity_casualties,
+        'chart_assessments': chart_assessments,
+        'charts_ipc_cdr': charts_ipc_cdr,
+    }
