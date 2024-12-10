@@ -318,23 +318,49 @@ df_ipc = calculate_expected_cumulative_deaths(df_ipc)
 
 df_ipc
 
-# %%
-chart_ipc_cdr = (
-    alt.Chart(df_ipc)
-    .mark_area(opacity=0.5)
-    .encode(
-        alt.X('end_date:T').title(None),
-        alt.Y('cumulative_lower:Q').title('Cumulative total'),
-        alt.Y2('cumulative_upper:Q'),
-    )
-    .properties(
-        title='Deaths expected based on IPC\'s crude death rate (source: IPC)',
-        width=600,
-        height=400,
-    )
-)
 
-chart_ipc_cdr.save('../charts/casualties_ipc_cdr.png')
+# %%
+def generate_ipc_cdr_chart(
+    df_ipc: pd.DataFrame,
+    title: Optional[str] = None,
+    save: bool = True,
+    filename: Optional[str] = 'chart.png',
+) -> alt.Chart:
+    """
+    Visualise deaths from IPC's phase assessments and CDR.
+    """
+
+    # generate chart
+    chart_ipc_cdr = (
+        alt.Chart(df_ipc)
+        .mark_area(opacity=0.5)
+        .encode(
+            alt.X('end_date:T').title(None),
+            alt.Y('cumulative_lower:Q').title('Cumulative total'),
+            alt.Y2('cumulative_upper:Q'),
+        )
+        .properties(
+            title=title or '',
+            width=600,
+            height=400,
+        )
+    )
+
+    # save chart
+    if save is True:
+        chart_file_path = CHARTS_DIR / filename
+        chart_ipc_cdr.save(chart_file_path)
+
+    return chart_ipc_cdr
+
+
+# %%
+# generate IPC CDR chart
+chart_ipc_cdr = generate_ipc_cdr_chart(
+    df_ipc,
+    title='Deaths expected based on IPC\'s crude death rate (source: IPC)',
+    filename='ipc_cdr_deaths.png',
+)
 
 chart_ipc_cdr
 
