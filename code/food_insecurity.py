@@ -18,7 +18,8 @@
 
 # %%
 import datetime
-from typing import Dict, Union
+from pathlib import Path
+from typing import Dict, Optional, Union
 
 import altair as alt
 import pandas as pd
@@ -31,37 +32,81 @@ import pandas as pd
 
 # %%
 # from https://www.ipcinfo.org/ipc-country-analysis/en/
-df_ipc = pd.read_csv('../data/food_insecurity/ipc_assessments.csv')
+ipc_assessments = 'data/food_insecurity/ipc_assessments.csv'
+
+script_dir = Path('__file__').resolve().parent
+root_dir = script_dir.parent
+data_file_path = root_dir / ipc_assessments
+data_file_path = str(data_file_path.resolve())
+
+# %% [markdown]
+# ### IPC CDR reference table
 
 # %%
+# figure 25 from https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/manual/IPC_Technical_Manual_3_Final.pdf
+ipc_cdr = {
+    'Crisis': {
+        'lower_bound': 0.5 / 10000,
+        'upper_bound': 0.99 / 10000,
+    },
+    'Emergency': {
+        'lower_bound': 1 / 10000,
+        'upper_bound': 1.99 / 10000,
+    },
+    'Catastrophe': {
+        'lower_bound': 2 / 10000,
+        'upper_bound': None,
+    },
+}
+
+# %% [markdown]
+# ### Gaza population
+
+# %%
+# average from IPC analyses
+gaza_pop_total = 2.2 * 10**6
+
+# %% [markdown]
+# ### Data cleaning
+
+# %%
+def load_and_preprocess_data(
+    file_path: Optional[Union[str, Path]] = None
+) -> pd.DataFrame:
+    """
+    Load IPC assessments and clean the data.
+    """
+
+    # load ipc_assessments.csv file in data dir
+    if file_path is None:
+        file_path = data_file_path
+
+    df_ipc = pd.read_csv(file_path)
+
+    # drop cols
+    df_ipc = df_ipc.drop(columns=['type', 'url'])
+
+    # convert date cols to datetime
+    df_ipc['start_date'] = pd.to_datetime(df_ipc['start_date'])
+    df_ipc['end_date'] = pd.to_datetime(df_ipc['end_date'])
+
+    # sort rows
+    df_ipc = df_ipc.sort_values('start_date')
+
+    return df_ipc
+
+
+# %%
+df_ipc = load_and_preprocess_data(data_file_path)
+
 df_ipc
-
-# %%
-# drop cols
-df_ipc = df_ipc.drop(columns=['type', 'url'])
-
-# %%
-# convert date cols to datetime
-df_ipc['start_date'] = pd.to_datetime(df_ipc['start_date'])
-df_ipc['end_date'] = pd.to_datetime(df_ipc['end_date'])
 
 
 # %%
 def create_linear_timeline(df_ipc: pd.DataFrame) -> pd.DataFrame:
     """
     Determine linear timeline across assessments.
-
-    Parameters:
-    df_ipc (pd.DataFrame): DataFrame with `start_date` and `end_date` columns.
-
-    Returns:
-    pd.DataFrame: Linear timeline DataFrame.
     """
-
-    df_ipc['start_date'] = pd.to_datetime(df_ipc['start_date'])
-    df_ipc['end_date'] = pd.to_datetime(df_ipc['end_date'])
-
-    df_ipc = df_ipc.sort_values('start_date')
 
     linear_timeline_rows = []
 
@@ -73,8 +118,8 @@ def create_linear_timeline(df_ipc: pd.DataFrame) -> pd.DataFrame:
         ):
             linear_timeline_rows.append(row)
 
+        # if overlap, set end_date of last linear row to before start_date of new row
         else:
-            # set end_date of last linear row to before start_date of new row
             linear_timeline_rows[-1]['end_date'] = min(
                 linear_timeline_rows[-1]['end_date'],
                 row['start_date'] - pd.Timedelta(days=1),
@@ -90,17 +135,17 @@ def create_linear_timeline(df_ipc: pd.DataFrame) -> pd.DataFrame:
 
 
 # %%
-# create df with linear timeline
+# determine linear timeline across assessments
 df_ipc = create_linear_timeline(df_ipc)
+
+df_ipc
 
 
 # %%
 def find_assessment_gaps(df_ipc: pd.DataFrame, interpolate: bool = True) -> pd.DataFrame:
     """
-    Find gaps in assessments with rows containing None values.
+    Find gaps in assessments and interpolate values based on surrounding assessments.
     """
-
-    df_ipc = df_ipc.sort_values('start_date').reset_index(drop=True)
 
     gap_rows = {'start_date': [], 'end_date': []}
 
@@ -134,33 +179,6 @@ def find_assessment_gaps(df_ipc: pd.DataFrame, interpolate: bool = True) -> pd.D
 df_ipc = find_assessment_gaps(df_ipc, interpolate=True)
 
 df_ipc
-
-# %% [markdown]
-# ### IPC CDR reference table
-
-# %%
-# figure 25 from https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/manual/IPC_Technical_Manual_3_Final.pdf
-ipc_cdr = {
-    'Crisis': {
-        'lower_bound': 0.5 / 10000,
-        'upper_bound': 0.99 / 10000,
-    },
-    'Emergency': {
-        'lower_bound': 1 / 10000,
-        'upper_bound': 1.99 / 10000,
-    },
-    'Catastrophe': {
-        'lower_bound': 2 / 10000,
-        'upper_bound': None,
-    },
-}
-
-# %% [markdown]
-# ### Gaza population
-
-# %%
-# average from IPC analyses
-gaza_pop_total = 2.2 * 10**6
 
 # %% [markdown]
 # ## Assessments over time
