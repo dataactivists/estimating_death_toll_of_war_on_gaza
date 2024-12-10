@@ -183,31 +183,59 @@ df_ipc
 # %% [markdown]
 # ## Assessments over time
 
-# %%
-df_melted = df_ipc.melt(
-    id_vars=['start_date', 'end_date'],
-    var_name='Phase',
-    value_name='Percentage',
-).melt(
-    id_vars=['Phase', 'Percentage'],
-    var_name='date_type',
-    value_name='date',
-)
 
 # %%
-chart_assessments = (
-    alt.Chart(df_melted)
-    .mark_area()
-    .encode(
-        x=alt.X('date:T').title('Period'),
-        y=alt.Y('Percentage:Q').sort(None).stack('normalize'),
-        color=alt.Color('Phase:N').sort(None),
+def generate_assessments_chart(
+    df_ipc: pd.DataFrame,
+    title: Optional[str] = None,
+    save: bool = True,
+    filename: Optional[str] = 'chart.png',
+) -> alt.Chart:
+    """
+    Visualise evolution in IPC assessments
+    """
+
+    # convert to long format
+    df_melted = df_ipc.melt(
+        id_vars=['start_date', 'end_date'],
+        var_name='Phase',
+        value_name='Percentage',
+    ).melt(
+        id_vars=['Phase', 'Percentage'],
+        var_name='date_type',
+        value_name='date',
     )
-    .properties(
-        title='Distribution of IPC phases over time',
-        width=600,
-        height=400,
+
+    # generate chart
+    chart_assessments = (
+        alt.Chart(df_melted)
+        .mark_area()
+        .encode(
+            x=alt.X('date:T').title('Period'),
+            y=alt.Y('Percentage:Q').sort(None).stack('normalize'),
+            color=alt.Color('Phase:N').sort(None),
+        )
+        .properties(
+            title=title or '',
+            width=600,
+            height=400,
+        )
     )
+
+    # save chart
+    if save is True:
+        chart_file_path = CHARTS_DIR / filename
+        chart_assessments.save(chart_file_path)
+
+    return chart_assessments
+
+
+# %%
+# generate assessments chart
+chart_assessments = generate_assessments_chart(
+    df_ipc,
+    title='Distribution of IPC phases over time',
+    filename='ipc_assessments.png',
 )
 
 chart_assessments
