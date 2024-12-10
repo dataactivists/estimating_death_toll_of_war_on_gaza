@@ -245,19 +245,12 @@ chart_assessments
 
 
 # %%
-def calculate_expected_dead(row: pd.Series, lower: bool = True) -> Dict[str, int]:
+def calculate_expected_deaths(row: pd.Series) -> Dict[str, int]:
     """
-    Calculate expected dead based on IPC assessment and CDR.
-
-    Parameters:
-    row (pd.Series): Series containing 'start_date', 'end_date', 'Emergency', and 'Catastrophe' columns.
-    lower (bool): Whether to use the lower or upper bound of the CDR. Defaults to True.
-
-    Returns:
-    int: The expected number of dead.
+    Calculate expected number of deaths based on IPC assessment and CDR, with lower and upper bounds.
     """
 
-    expected_dead = {
+    expected_deaths = {
         'lower': 0,
         'upper': 0,
     }
@@ -283,36 +276,46 @@ def calculate_expected_dead(row: pd.Series, lower: bool = True) -> Dict[str, int
         # duration
         duration = (row['end_date'] - row['start_date']).days
 
-        # expected dead for given level, cdr, duration
+        # expected deaths for given level, cdr, duration
         value_lower = int(sub_pop * cdr_lower * duration)
         value_upper = int(sub_pop * cdr_upper * duration)
 
-        expected_dead['lower'] += value_lower
-        expected_dead['upper'] += value_upper
+        expected_deaths['lower'] += value_lower
+        expected_deaths['upper'] += value_upper
 
-    return expected_dead
-
-
-# %%
-expected_dead = df_ipc.apply(calculate_expected_dead, axis=1)
-
-df_ipc = pd.concat(
-    [
-        df_ipc,
-        pd.json_normalize(expected_dead).rename(lambda x: f'expected_dead_{x}', axis=1),
-    ],
-    axis=1,
-)
-
-df_ipc
-
-# %%
-# calculate cumulative totals
-df_ipc['cumulative_lower'] = df_ipc['expected_dead_lower'].cumsum()
-df_ipc['cumulative_upper'] = df_ipc['expected_dead_upper'].cumsum()
+    return expected_deaths
 
 
 # %%
+def calculate_expected_cumulative_deaths(df_ipc: pd.DataFrame) -> pd.DataFrame:
+    """
+    Calculate expected deaths and cumulative totals.
+    """
+
+    # calculate expected deaths
+    expected_deaths = df_ipc.apply(calculate_expected_deaths, axis=1)
+
+    # add cols with expected deaths
+    df_ipc = pd.concat(
+        [
+            df_ipc,
+            pd.json_normalize(expected_deaths).rename(
+                lambda x: f'expected_deaths_{x}', axis=1
+            ),
+        ],
+        axis=1,
+    )
+
+    # calculate cumulative totals
+    df_ipc['cumulative_lower'] = df_ipc['expected_deaths_lower'].cumsum()
+    df_ipc['cumulative_upper'] = df_ipc['expected_deaths_upper'].cumsum()
+
+    return df_ipc
+
+
+# %%
+df_ipc = calculate_expected_cumulative_deaths(df_ipc)
+
 df_ipc
 
 # %%
@@ -337,7 +340,7 @@ chart_ipc_cdr
 
 
 # %%
-def estimate_dead_for_date(
+def estimate_deaths_for_date(
     df_ipc: pd.DataFrame, date: Union[str, datetime.datetime] = datetime.date.today()
 ) -> Dict[str, int]:
     """
@@ -346,11 +349,16 @@ def estimate_dead_for_date(
 
     estimates = {}
 
+    if date is None:
+        date = datetime.date.today()
+
     date = pd.to_datetime(date)
     estimates['date'] = date
 
     for i in range(len(df_ipc)):
+        # find assessment that contains date
         if df_ipc.loc[i, 'start_date'] <= date <= df_ipc.loc[i, 'end_date']:
+            # calculate lower and upper bounds of expected deaths
             for bound in ['lower', 'upper']:
                 estimate_base = df_ipc.loc[i - 1, f'cumulative_{bound}']
                 estimate_range = (
@@ -372,9 +380,8 @@ def estimate_dead_for_date(
 
 # %%
 # determine lower and upper bounds
-food_insecurity_casualties = estimate_dead_for_date(
+food_insecurity_casualties = estimate_deaths_for_date(
     df_ipc=df_ipc, date=datetime.date.today()
 )
 
-# %%
 food_insecurity_casualties
