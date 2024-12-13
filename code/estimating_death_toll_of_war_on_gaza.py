@@ -25,7 +25,7 @@ import pandas as pd
 
 # %%
 # from https://data.techforpalestine.org/
-df_official = pd.read_csv('../data/casualties_daily.csv')
+df_official = pd.read_csv('../data/moh_casualty_data/casualties_daily.csv')
 
 # %% editable=true slideshow={"slide_type": ""}
 df_official
