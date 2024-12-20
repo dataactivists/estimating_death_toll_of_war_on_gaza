@@ -210,14 +210,20 @@ def generate_assessments_chart(
         value_name='date',
     )
 
+    # sort phases
+    df_melted = df_melted.replace(
+        {x: f'{i} - {x}' for i, x in enumerate(df_ipc.columns[2:])}
+    )
+
     # generate chart
     chart_assessments = (
         alt.Chart(df_melted)
-        .mark_area()
+        .mark_area(stroke='white', strokeWidth=2)
         .encode(
             x=alt.X('date:T').title('Period'),
-            y=alt.Y('Percentage:Q').sort(None).stack('normalize'),
-            color=alt.Color('Phase:N').sort(None),
+            y=alt.Y('Percentage:Q').stack('normalize'),
+            color=alt.Color('Phase:N'),
+            tooltip=['Phase:N', 'Percentage:Q'],
         )
         .properties(
             title=title or '',
