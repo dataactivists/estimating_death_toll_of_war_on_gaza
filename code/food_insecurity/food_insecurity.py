@@ -25,6 +25,11 @@ from typing import Dict, Optional, Union
 import altair as alt
 import pandas as pd
 
+# %%
+sys.path.insert(0, '..')
+
+from config import CHARTS_DIR, DATA_DIR
+
 # %% [markdown]
 # ## Data
 
@@ -33,12 +38,9 @@ import pandas as pd
 
 # %%
 # from https://www.ipcinfo.org/ipc-country-analysis/en/
-ipc_assessments = 'data/food_insecurity/ipc_assessments.csv'
+ipc_assessments = 'food_insecurity/ipc_assessments.csv'
 
-script_dir = Path('__file__').resolve().parent
-root_dir = script_dir.parent
-data_file_path = root_dir / ipc_assessments
-data_file_path = str(data_file_path.resolve())
+data_file_path = DATA_DIR / ipc_assessments
 
 # %% [markdown]
 # ### IPC CDR reference table
@@ -67,22 +69,23 @@ ipc_cdr = {
 # average from IPC analyses
 gaza_pop_total = 2.2 * 10**6
 
+
 # %% [markdown]
 # ### Data cleaning
 
 # %%
 def load_and_preprocess_data(
-    file_path: Optional[Union[str, Path]] = None
+    data_file_path: Optional[Union[str, Path]] = None
 ) -> pd.DataFrame:
     """
     Load IPC assessments and clean the data.
     """
 
     # load ipc_assessments.csv file in data dir
-    if file_path is None:
-        file_path = data_file_path
+    if data_file_path is None:
+        data_file_path = DATA_DIR / ipc_assessments
 
-    df_ipc = pd.read_csv(file_path)
+    df_ipc = pd.read_csv(data_file_path)
 
     # drop cols
     df_ipc = df_ipc.drop(columns=['type', 'url'])
@@ -98,7 +101,7 @@ def load_and_preprocess_data(
 
 
 # %%
-df_ipc = load_and_preprocess_data(data_file_path)
+df_ipc = load_and_preprocess_data()
 
 df_ipc
 
@@ -311,6 +314,11 @@ def calculate_expected_cumulative_deaths(df_ipc: pd.DataFrame) -> pd.DataFrame:
     df_ipc['cumulative_lower'] = df_ipc['expected_deaths_lower'].cumsum()
     df_ipc['cumulative_upper'] = df_ipc['expected_deaths_upper'].cumsum()
 
+    # save cleaned data
+    data_file_path = DATA_DIR / ipc_assessments
+
+    df_ipc.to_csv(str(data_file_path).replace('.csv', '_clean.csv'), index=False)
+
     return df_ipc
 
 
@@ -416,7 +424,7 @@ food_insecurity_casualties
 
 # %%
 def assess_food_insecurity(
-    file_path: str = None,
+    data_file_path: str = None,
     date: Union[str, datetime.datetime] = None,
     save_charts: bool = True,
 ) -> Dict[str, Union[Dict[str, int], alt.Chart]]:
@@ -425,7 +433,7 @@ def assess_food_insecurity(
     """
 
     # load IPC assessments and clean the data.
-    df_ipc = load_and_preprocess_data(file_path)
+    df_ipc = load_and_preprocess_data(data_file_path)
 
     # determine linear timeline across assessments.
     df_ipc = create_linear_timeline(df_ipc)
@@ -443,9 +451,6 @@ def assess_food_insecurity(
 
     # calculate expected deaths and cumulative totals
     df_ipc = calculate_expected_cumulative_deaths(df_ipc)
-
-    # save cleaned data
-    df_ipc.to_csv(file_path.replace('.csv', '_clean.csv'), index=False)
 
     # visualise deaths from IPC's phase assessments and CDR
     charts_ipc_cdr = generate_ipc_cdr_chart(
