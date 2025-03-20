@@ -26,7 +26,7 @@ import altair as alt
 import pandas as pd
 
 # %%
-sys.path.insert(0, '..')
+sys.path.insert(0, "..")
 
 from config import CHARTS_DIR, DATA_DIR
 
@@ -38,7 +38,7 @@ from config import CHARTS_DIR, DATA_DIR
 
 # %%
 # from https://www.ipcinfo.org/ipc-country-analysis/en/
-ipc_assessments = 'food_insecurity/ipc_assessments.csv'
+ipc_assessments = "food_insecurity/ipc_assessments.csv"
 
 data_file_path = DATA_DIR / ipc_assessments
 
@@ -48,17 +48,17 @@ data_file_path = DATA_DIR / ipc_assessments
 # %%
 # figure 25 from https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/manual/IPC_Technical_Manual_3_Final.pdf
 ipc_cdr = {
-    'Crisis': {
-        'lower_bound': 0.5 / 10000,
-        'upper_bound': 0.99 / 10000,
+    "Crisis": {
+        "lower_bound": 0.5 / 10000,
+        "upper_bound": 0.99 / 10000,
     },
-    'Emergency': {
-        'lower_bound': 1 / 10000,
-        'upper_bound': 1.99 / 10000,
+    "Emergency": {
+        "lower_bound": 1 / 10000,
+        "upper_bound": 1.99 / 10000,
     },
-    'Catastrophe': {
-        'lower_bound': 2 / 10000,
-        'upper_bound': None,
+    "Catastrophe": {
+        "lower_bound": 2 / 10000,
+        "upper_bound": None,
     },
 }
 
@@ -73,9 +73,10 @@ gaza_pop_total = 2.2 * 10**6
 # %% [markdown]
 # ### Data cleaning
 
+
 # %%
 def load_and_preprocess_data(
-    data_file_path: Optional[Union[str, Path]] = None
+    data_file_path: Optional[Union[str, Path]] = None,
 ) -> pd.DataFrame:
     """
     Load IPC assessments and clean the data.
@@ -88,14 +89,14 @@ def load_and_preprocess_data(
     df_ipc = pd.read_csv(data_file_path)
 
     # drop cols
-    df_ipc = df_ipc.drop(columns=['type', 'url'])
+    df_ipc = df_ipc.drop(columns=["type", "url"])
 
     # convert date cols to datetime
-    df_ipc['start_date'] = pd.to_datetime(df_ipc['start_date'])
-    df_ipc['end_date'] = pd.to_datetime(df_ipc['end_date'])
+    df_ipc["start_date"] = pd.to_datetime(df_ipc["start_date"])
+    df_ipc["end_date"] = pd.to_datetime(df_ipc["end_date"])
 
     # sort rows
-    df_ipc = df_ipc.sort_values('start_date')
+    df_ipc = df_ipc.sort_values("start_date")
 
     return df_ipc
 
@@ -118,22 +119,22 @@ def create_linear_timeline(df_ipc: pd.DataFrame) -> pd.DataFrame:
         # check if linear_timeline_rows is empty or no overlap with linear_timeline_row
         if (
             not linear_timeline_rows
-            or row['start_date'] > linear_timeline_rows[-1]['end_date']
+            or row["start_date"] > linear_timeline_rows[-1]["end_date"]
         ):
             linear_timeline_rows.append(row)
 
         # if overlap, set end_date of last linear row to before start_date of new row
         else:
-            linear_timeline_rows[-1]['end_date'] = min(
-                linear_timeline_rows[-1]['end_date'],
-                row['start_date'] - pd.Timedelta(days=1),
+            linear_timeline_rows[-1]["end_date"] = min(
+                linear_timeline_rows[-1]["end_date"],
+                row["start_date"] - pd.Timedelta(days=1),
             )
 
             linear_timeline_rows.append(row)
 
     df_linear = pd.DataFrame(linear_timeline_rows)
 
-    df_linear = df_linear.sort_values('start_date').reset_index(drop=True)
+    df_linear = df_linear.sort_values("start_date").reset_index(drop=True)
 
     return df_linear
 
@@ -146,35 +147,37 @@ df_ipc
 
 
 # %%
-def find_assessment_gaps(df_ipc: pd.DataFrame, interpolate: bool = True) -> pd.DataFrame:
+def find_assessment_gaps(
+    df_ipc: pd.DataFrame, interpolate: bool = True
+) -> pd.DataFrame:
     """
     Find gaps in assessments and interpolate values based on surrounding assessments.
     """
 
-    gap_rows = {'start_date': [], 'end_date': []}
+    gap_rows = {"start_date": [], "end_date": []}
 
     for i in range(1, len(df_ipc)):
         # previous row end_date
-        previous_end_date = df_ipc.loc[i - 1, 'end_date']
+        previous_end_date = df_ipc.loc[i - 1, "end_date"]
         # current row start_date
-        current_start_date = df_ipc.loc[i, 'start_date']
+        current_start_date = df_ipc.loc[i, "start_date"]
 
         # if diff between previous end_date and current start_date > 1, create new row filling the gap interval
         if (current_start_date - previous_end_date).days > 1:
             gap_start_date = previous_end_date + pd.Timedelta(days=1)
-            gap_rows['start_date'].append(gap_start_date)
+            gap_rows["start_date"].append(gap_start_date)
 
             gap_end_date = current_start_date - pd.Timedelta(days=1)
-            gap_rows['end_date'].append(gap_end_date)
+            gap_rows["end_date"].append(gap_end_date)
 
     df_gaps = pd.DataFrame(gap_rows)
     df_ipc = pd.concat([df_ipc, df_gaps], ignore_index=True)
 
-    df_ipc = df_ipc.sort_values('start_date').reset_index(drop=True)
+    df_ipc = df_ipc.sort_values("start_date").reset_index(drop=True)
 
     # fill NA values with average of surrounding assessments
     if interpolate is True:
-        df_ipc = df_ipc.interpolate(method='linear', limit_direction='both')
+        df_ipc = df_ipc.interpolate(method="linear", limit_direction="both")
 
     return df_ipc
 
@@ -193,7 +196,7 @@ def generate_assessments_chart(
     df_ipc: pd.DataFrame,
     title: Optional[str] = None,
     save: bool = True,
-    filename: Optional[str] = 'chart.png',
+    filename: Optional[str] = "chart.png",
 ) -> alt.Chart:
     """
     Visualise evolution in IPC assessments
@@ -201,32 +204,32 @@ def generate_assessments_chart(
 
     # convert to long format
     df_melted = df_ipc.melt(
-        id_vars=['start_date', 'end_date'],
-        var_name='Phase',
-        value_name='Percentage',
+        id_vars=["start_date", "end_date"],
+        var_name="Phase",
+        value_name="Percentage",
     ).melt(
-        id_vars=['Phase', 'Percentage'],
-        var_name='date_type',
-        value_name='date',
+        id_vars=["Phase", "Percentage"],
+        var_name="date_type",
+        value_name="date",
     )
 
     # sort phases
     df_melted = df_melted.replace(
-        {x: f'{i} - {x}' for i, x in enumerate(df_ipc.columns[2:])}
+        {x: f"{i} - {x}" for i, x in enumerate(df_ipc.columns[2:])}
     )
 
     # generate chart
     chart_assessments = (
         alt.Chart(df_melted)
-        .mark_area(stroke='white', strokeWidth=2)
+        .mark_area(stroke="white", strokeWidth=2)
         .encode(
-            x=alt.X('date:T').title('Period'),
-            y=alt.Y('Percentage:Q').stack('normalize'),
-            color=alt.Color('Phase:N'),
-            tooltip=['Phase:N', 'Percentage:Q'],
+            x=alt.X("date:T").title("Period"),
+            y=alt.Y("Percentage:Q").stack("normalize"),
+            color=alt.Color("Phase:N"),
+            tooltip=["Phase:N", "Percentage:Q"],
         )
         .properties(
-            title=title or '',
+            title=title or "",
             width=600,
             height=400,
         )
@@ -244,8 +247,8 @@ def generate_assessments_chart(
 # generate assessments chart
 chart_assessments = generate_assessments_chart(
     df_ipc,
-    title='Distribution of IPC phases over time',
-    filename='ipc_assessments.png',
+    title="Distribution of IPC phases over time",
+    filename="ipc_assessments.png",
 )
 
 chart_assessments
@@ -261,12 +264,12 @@ def calculate_expected_deaths(row: pd.Series) -> Dict[str, int]:
     """
 
     expected_deaths = {
-        'lower': 0,
-        'upper': 0,
+        "lower": 0,
+        "upper": 0,
     }
 
     # acute food insecurity levels for which mortality is calculated
-    levels = ['Emergency', 'Catastrophe']
+    levels = ["Emergency", "Catastrophe"]
 
     for level in levels:
         if pd.isna(row[level]):
@@ -276,22 +279,22 @@ def calculate_expected_deaths(row: pd.Series) -> Dict[str, int]:
         sub_pop = row[level] * gaza_pop_total
 
         # cdr
-        cdr_lower = ipc_cdr[level]['lower_bound']
+        cdr_lower = ipc_cdr[level]["lower_bound"]
         cdr_upper = (
-            ipc_cdr[level]['upper_bound']
-            if ipc_cdr[level]['upper_bound'] is not None
-            else ipc_cdr[level]['lower_bound']
+            ipc_cdr[level]["upper_bound"]
+            if ipc_cdr[level]["upper_bound"] is not None
+            else ipc_cdr[level]["lower_bound"]
         )
 
         # duration
-        duration = (row['end_date'] - row['start_date']).days
+        duration = (row["end_date"] - row["start_date"]).days
 
         # expected deaths for given level, cdr, duration
         value_lower = int(sub_pop * cdr_lower * duration)
         value_upper = int(sub_pop * cdr_upper * duration)
 
-        expected_deaths['lower'] += value_lower
-        expected_deaths['upper'] += value_upper
+        expected_deaths["lower"] += value_lower
+        expected_deaths["upper"] += value_upper
 
     return expected_deaths
 
@@ -310,20 +313,20 @@ def calculate_expected_cumulative_deaths(df_ipc: pd.DataFrame) -> pd.DataFrame:
         [
             df_ipc,
             pd.json_normalize(expected_deaths).rename(
-                lambda x: f'expected_deaths_{x}', axis=1
+                lambda x: f"expected_deaths_{x}", axis=1
             ),
         ],
         axis=1,
     )
 
     # calculate cumulative totals
-    df_ipc['cumulative_lower'] = df_ipc['expected_deaths_lower'].cumsum()
-    df_ipc['cumulative_upper'] = df_ipc['expected_deaths_upper'].cumsum()
+    df_ipc["cumulative_lower"] = df_ipc["expected_deaths_lower"].cumsum()
+    df_ipc["cumulative_upper"] = df_ipc["expected_deaths_upper"].cumsum()
 
     # save cleaned data
     data_file_path = DATA_DIR / ipc_assessments
 
-    df_ipc.to_csv(str(data_file_path).replace('.csv', '_clean.csv'), index=False)
+    df_ipc.to_csv(str(data_file_path).replace(".csv", "_clean.csv"), index=False)
 
     return df_ipc
 
@@ -339,7 +342,7 @@ def generate_ipc_cdr_chart(
     df_ipc: pd.DataFrame,
     title: Optional[str] = None,
     save: bool = True,
-    filename: Optional[str] = 'chart.png',
+    filename: Optional[str] = "chart.png",
 ) -> alt.Chart:
     """
     Visualise deaths from IPC's phase assessments and CDR.
@@ -350,12 +353,12 @@ def generate_ipc_cdr_chart(
         alt.Chart(df_ipc)
         .mark_area(opacity=0.5)
         .encode(
-            alt.X('end_date:T').title(None),
-            alt.Y('cumulative_lower:Q').title('Cumulative total'),
-            alt.Y2('cumulative_upper:Q'),
+            alt.X("end_date:T").title(None),
+            alt.Y("cumulative_lower:Q").title("Cumulative total"),
+            alt.Y2("cumulative_upper:Q"),
         )
         .properties(
-            title=title or '',
+            title=title or "",
             width=600,
             height=400,
         )
@@ -373,8 +376,8 @@ def generate_ipc_cdr_chart(
 # generate IPC CDR chart
 chart_ipc_cdr = generate_ipc_cdr_chart(
     df_ipc,
-    title='Deaths expected based on IPC\'s crude death rate (source: IPC)',
-    filename='ipc_cdr_deaths.png',
+    title="Deaths expected based on IPC's crude death rate (source: IPC)",
+    filename="ipc_cdr_deaths.png",
 )
 
 chart_ipc_cdr
@@ -394,20 +397,22 @@ def estimate_deaths_for_date(
         date = datetime.date.today()
 
     date = pd.to_datetime(date)
-    estimates['date'] = date
+    estimates["date"] = date
 
     for i in range(len(df_ipc)):
         # find assessment that contains date
-        if df_ipc.loc[i, 'start_date'] <= date <= df_ipc.loc[i, 'end_date']:
+        if df_ipc.loc[i, "start_date"] <= date <= df_ipc.loc[i, "end_date"]:
             # calculate lower and upper bounds of expected deaths
-            for bound in ['lower', 'upper']:
-                estimate_base = df_ipc.loc[i - 1, f'cumulative_{bound}']
+            for bound in ["lower", "upper"]:
+                estimate_base = df_ipc.loc[i - 1, f"cumulative_{bound}"]
                 estimate_range = (
-                    df_ipc.loc[i, f'cumulative_{bound}']
-                    - df_ipc.loc[i - 1, f'cumulative_{bound}']
+                    df_ipc.loc[i, f"cumulative_{bound}"]
+                    - df_ipc.loc[i - 1, f"cumulative_{bound}"]
                 )
-                period = (df_ipc.loc[i, 'end_date'] - df_ipc.loc[i - 1, 'end_date']).days
-                period_pro_rated = (date - df_ipc.loc[i - 1, 'end_date']).days
+                period = (
+                    df_ipc.loc[i, "end_date"] - df_ipc.loc[i - 1, "end_date"]
+                ).days
+                period_pro_rated = (date - df_ipc.loc[i - 1, "end_date"]).days
 
                 estimate = estimate_base + estimate_range / period * period_pro_rated
                 estimate = int(estimate)
@@ -450,9 +455,9 @@ def assess_food_insecurity(
     # visualise evolution in IPC assessments
     chart_assessments = generate_assessments_chart(
         df_ipc,
-        title='Distribution of IPC phases over time',
+        title="Distribution of IPC phases over time",
         save=save_charts,
-        filename='ipc_assessments.png',
+        filename="ipc_assessments.png",
     )
 
     # calculate expected deaths and cumulative totals
@@ -461,15 +466,15 @@ def assess_food_insecurity(
     # visualise deaths from IPC's phase assessments and CDR
     charts_ipc_cdr = generate_ipc_cdr_chart(
         df_ipc,
-        title='Deaths expected based on IPC\'s crude death rate (source: IPC)',
-        filename='ipc_cdr_deaths.png',
+        title="Deaths expected based on IPC's crude death rate (source: IPC)",
+        filename="ipc_cdr_deaths.png",
     )
 
     # estimate number of deaths based on IPC CDR for a specific date
     food_insecurity_casualties = estimate_deaths_for_date(df_ipc, date=date)
 
     return {
-        'food_insecurity_casualties': food_insecurity_casualties,
-        'chart_assessments': chart_assessments,
-        'charts_ipc_cdr': charts_ipc_cdr,
+        "food_insecurity_casualties": food_insecurity_casualties,
+        "chart_assessments": chart_assessments,
+        "charts_ipc_cdr": charts_ipc_cdr,
     }
